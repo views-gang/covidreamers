@@ -1,3 +1,4 @@
+import json
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
@@ -27,10 +28,11 @@ for i in norm_coords.iterrows():
     stats[int(i[1][0]),int(i[1][1])] +=1
 
 fig = plt.figure(frameon=False)
-fig.set_size_inches(20,20)
+fig.set_size_inches(50,50)
 ax = plt.Axes(fig, [0., 0., 1., 1.])
 ax.set_axis_off()
 fig.add_axes(ax)
 
-plt.imshow(stats/255, aspect='auto', cmap='plasma')
+plt.imshow(stats/stats.max(), aspect='auto', cmap='gist_earth')
 plt.savefig(f'{today}.png')
+print(f'generated {today}, white is: {stats.max()}')
