@@ -9,7 +9,7 @@ today = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
 data = requests.get('https://www.gorses.na4u.ru/data/COVID.json').json()
 
-    coords = []
+coords = []
 for i in data['features']:
     coords.append(i['geometry']['coordinates'])
 coords = pd.DataFrame(coords)
